@@ -46,9 +46,19 @@ function saveSchedule() {
     textarea.addEventListener("change", handleTextareaChange);
   });
   
-  saveButtons.forEach(function (saveButton) {
-    saveButton.addEventListener("click", handleSaveButtonClick);
-  });
+  //saveButtons.forEach(function (saveButton) {
+    //saveButton.addEventListener("click", handleSaveButtonClick);
+    function handleSaveButtonClick(event) {
+        var saveButton = event.target;
+        var timeBlockElement = saveButton.closest(".time-block");
+        var timeBlockId = timeBlockElement.id;
+        var eventText = timeBlockElement.querySelector(".description").value;
+      
+        schedule[timeBlockId] = eventText;
+        saveSchedule();
+      
+      
+  };
   
   populateTimeBlocks();
   
